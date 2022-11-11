@@ -14,7 +14,7 @@ export default class Pawn extends Piece {
             direction = -1;
             startingRow = 6;
         }
-        const availableSquares = []
+        const availableSquares = [];
         let newSquare = Object.create(currentSquare);
         newSquare.row += direction;
         availableSquares.push(newSquare);
