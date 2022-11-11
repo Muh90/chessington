@@ -15,16 +15,14 @@ export default class Pawn extends Piece {
             startingRow = 6;
         }
         const availableSquares = []
-        let newSquare;
-        if (currentSquare.row === startingRow) {
-            newSquare = currentSquare;
-            newSquare.row += 2 * direction;
-            availableSquares.push(newSquare);
-            currentSquare = board.findPiece(this);
-        }
-        newSquare = currentSquare;
+        let newSquare = Object.create(currentSquare);
         newSquare.row += direction;
         availableSquares.push(newSquare);
+        if (currentSquare.row === startingRow) {
+            newSquare = Object.create(currentSquare);
+            newSquare.row += 2 * direction;
+            availableSquares.push(newSquare);
+        }
         return availableSquares;
     }
 }
