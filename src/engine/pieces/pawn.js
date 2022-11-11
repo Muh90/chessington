@@ -1,4 +1,5 @@
 import Piece from './piece';
+import Player from "../player";
 
 export default class Pawn extends Piece {
     constructor(player) {
@@ -6,6 +7,12 @@ export default class Pawn extends Piece {
     }
 
     getAvailableMoves(board) {
-        return new Array(0);
+        const currentSquare = board.findPiece(this);
+        let direction = 1;
+        if (this.player === Player.BLACK) {
+            direction = -1;
+        }
+        currentSquare.row += direction;
+        return [currentSquare];
     }
 }
